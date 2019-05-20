@@ -1,0 +1,24 @@
+﻿@model Vidix.ViewModels.RandomMovieViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Customers</h2>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model.Customers)
+        {
+            <tr>
+
+                <td>@customer.Name</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
