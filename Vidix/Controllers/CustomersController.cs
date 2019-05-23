@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
 using Vidix.Models;
 using Vidix.ViewModels;
 
@@ -24,7 +25,7 @@ namespace Vidix.Controllers
         // GET: Customers
         public ViewResult Index()
         {
-            var customers = _context.Customers;
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
             return View(customers);
         }
         public ActionResult Details(int id)

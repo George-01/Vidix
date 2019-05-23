@@ -14,6 +14,8 @@ namespace Vidix.Models
         [StringLength(255)]
         public string Name { get; set; }
 
+        public DateTime? Birthdate { get; set; }
+
         public byte IsSubscribedToNewsLetter { get; set; }
 
         public MembershipType MembershipType { get; set; }//Navigation property
