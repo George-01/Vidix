@@ -13,6 +13,9 @@ namespace Vidix.Models
 
         public byte IsSubscribedToNewsLetter { get; set; }
 
+        public MembershipType MembershipType { get; set; }//Navigation property
+
+        public byte MembershipTypeId { get; set; }//foreign Key
 
     }
 }
