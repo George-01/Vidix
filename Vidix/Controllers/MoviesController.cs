@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using Vidix.Models;
@@ -10,20 +11,31 @@ namespace Vidix.Controllers
 {
     public class MoviesController : Controller
     {
-        // GET: Movies
-       public ViewResult Index()
+        private ApplicationDbContext _context;
+
+        public MoviesController()
         {
-            var movies = GetMovies();
+           _context = new ApplicationDbContext();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _context.Dispose();
+        }
+        // GET: Movies
+        public ViewResult Index()
+        {
+            var movies = _context.Movies.Include(m => m.Genre).ToList();
             return View(movies);
         }
 
-        private IEnumerable<Movie> GetMovies()
+        public ActionResult Details(int id)
         {
-            return new List<Movie>
-            {
-                new Movie {Id = 1, Name = "Shreik" },
-                new Movie {Id = 2, Name = "Wall-e" }
-            };
+            var movie = _context.Movies.SingleOrDefault(m => m.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+            return View(movie);
         }
     }
 }
