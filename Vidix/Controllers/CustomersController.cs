@@ -11,20 +11,27 @@ namespace Vidix.Controllers
     public class CustomersController : Controller
     {
         // GET: Customers
-        public ActionResult Index()
+        public ViewResult Index()
         {
-            var customers = new List<Customer>
-            {
-                new Customer {Name= "John Smith" },
-                new Customer {Name = "Mary Williams" }
-            };
+            var customers = GetCustomers();
+            return View(customers);
+        }
 
-            var viewModel = new RandomMovieViewModel
+        private IEnumerable<Customer> GetCustomers()
+        {
+            return new List<Customer>
             {
-                Customers = customers
+                new Customer {Id = 1, Name = "John Smith" },
+                new Customer {Id = 2, Name = "Mary Williams" }
             };
-           
-            return View(viewModel);
+        }
+
+        public ActionResult Details(int id)
+        {
+            var customer = GetCustomers().SingleOrDefault(c => c.Id == id);
+            if (customer == null)
+                return HttpNotFound();
+            return View(customer);
         }
     }
 }

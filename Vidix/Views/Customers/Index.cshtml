@@ -1,24 +1,31 @@
-﻿@model Vidix.ViewModels.RandomMovieViewModel
+﻿@model IEnumerable<Vidix.Models.Customer>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Customers</h2>
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Customer</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var customer in Model.Customers)
-        {
+@if (!Model.Any())
+{
+    <p>We do not have any customers yet.</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
             <tr>
-
-                <td>@customer.Name</td>
+                <th>Customer</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                <tr>
+
+                    <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null) </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 

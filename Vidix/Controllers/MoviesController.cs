@@ -11,30 +11,19 @@ namespace Vidix.Controllers
     public class MoviesController : Controller
     {
         // GET: Movies
-        public ActionResult Random()
+       public ViewResult Index()
         {
-            var movie = new Movie()
-            {
-                Name = "Shreik!"
-            };
-
-            var customers = new List<Customer>
-            {
-                new Customer {Name= "Customer 1" },
-                new Customer {Name = "Customer 2" }
-            };
-
-            var viewModel = new RandomMovieViewModel
-            {
-                Movie = movie,
-                Customers = customers
-            };
-            return View(viewModel);
+            var movies = GetMovies();
+            return View(movies);
         }
 
-        public ActionResult Index()
+        private IEnumerable<Movie> GetMovies()
         {
-            return View();
+            return new List<Movie>
+            {
+                new Movie {Id = 1, Name = "Shreik" },
+                new Movie {Id = 2, Name = "Wall-e" }
+            };
         }
     }
 }
