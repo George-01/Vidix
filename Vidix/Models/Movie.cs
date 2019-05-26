@@ -19,7 +19,7 @@ namespace Vidix.Models
 
         public DateTime DatetAdded { get; set; }
 
-        public int NumberInStock { get; set; }
+        public byte NumberInStock { get; set; }
 
     }
 }

@@ -6,18 +6,10 @@
 
 <h2>@Model.Name</h2>
 <ul>
-    <li>
-        Genre: @Model.
-    </li>
-    <li>
-        Release Date: @Model.ReleaseDate.ToLongDateString()
-    </li>
-    <li>
-       Date Added: @Model.DatetAdded.ToLongDateString()
-    </li>
-    <li>
-       Number In Stock: @Model.NumberInStock
-    </li>
+    <li>Genre: @Model.Genre.Name</li>
+    <li>Release Date: @Model.ReleaseDate.ToLongDateString()</li>
+    <li>Date Added: @Model.DatetAdded.ToLongDateString()</li>
+    <li>Number In Stock: @Model.NumberInStock</li>
 </ul>
 
 
