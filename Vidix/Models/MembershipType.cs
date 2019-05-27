@@ -15,6 +15,7 @@ namespace Vidix.Models
         public byte DurationInMonths { get; set; }
         public byte DiscountRate { get; set; }
 
+        //Create specific types to resolve magic numbers in the Age biz rule.
         public static readonly byte Unknown = 0;// set to read only to avoid accidental changes in the code
         public static readonly byte PayAsYouGo = 0;
 
