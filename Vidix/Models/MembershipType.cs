@@ -14,5 +14,9 @@ namespace Vidix.Models
         public short SignUpFee { get; set; }
         public byte DurationInMonths { get; set; }
         public byte DiscountRate { get; set; }
+
+        public static readonly byte Unknown = 0;// set to read only to avoid accidental changes in the code
+        public static readonly byte PayAsYouGo = 0;
+
     }
 }
