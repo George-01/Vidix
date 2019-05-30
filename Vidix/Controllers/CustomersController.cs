@@ -23,6 +23,12 @@ namespace Vidix.Controllers
             _context.Dispose();    
         }
 
+        // GET: Customers
+        public ViewResult Index()
+        {
+            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
+            return View(customers);
+        }
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList(); //helps to capture and display membershipTypes from DB
@@ -62,12 +68,7 @@ namespace Vidix.Controllers
 
             return RedirectToAction("Index", "Customers");
         }
-        // GET: Customers
-        public ViewResult Index()
-        {
-            var customers = _context.Customers.Include(c => c.MembershipType).ToList();
-            return View(customers);
-        }
+
         public ActionResult Details(int id)
         {
             var customer = _context.Customers.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
