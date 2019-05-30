@@ -25,8 +25,8 @@ namespace Vidix.Models
 
         public DateTime DatetAdded { get; set; }
 
-        [Required]
-        [Range(1,20)]
+        [Display(Name = "Number in Stock")]
+        [Range(1, 20)]
         public byte NumberInStock { get; set; }
 
 

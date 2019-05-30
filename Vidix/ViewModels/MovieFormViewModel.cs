@@ -19,15 +19,15 @@ namespace Vidix.ViewModels
 
         [Required]
         [Display(Name = "Genre")]
-        public byte GenreId { get; set; }
+        public byte? GenreId { get; set; }
 
         [Required]
-        public DateTime ReleaseDate { get; set; }
-
-        public DateTime DatetAdded { get; set; }
+        public DateTime? ReleaseDate { get; set; }
 
         [Required]
-        public byte NumberInStock { get; set; }
+        [Display(Name = "Number in Stock")]
+        [Range(1, 20)]
+        public byte? NumberInStock { get; set; }
 
         public string Title
         {
